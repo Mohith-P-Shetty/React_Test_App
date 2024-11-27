@@ -1,0 +1,8 @@
+.gif-wrapper {
+  position: relative;
+}
+
+.gif {
+  position: absolute;
+  bottom: 0;
+}

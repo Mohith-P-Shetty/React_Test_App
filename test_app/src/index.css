@@ -1,5 +1,8 @@
-*{
+@import url("https://fonts.googleapis.com/css2?family=Anta&family=Audiowide&family=Black+Ops+One&family=Frijole&family=Goldman:wght@400;700&family=Gugi&family=Iceland&family=Nova+Square&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Rubik+80s+Fade&family=Rubik+Glitch&family=Rubik+Iso&family=Silkscreen:wght@400;700&family=Turret+Road:wght@200;300;400;500;700;800&family=Walter+Turncoat&family=Yatra+One&display=swap");
+
+* {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  font-family: "Nunito", serif;
 }

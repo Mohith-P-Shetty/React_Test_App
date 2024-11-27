@@ -1,4 +1,5 @@
 import { useState } from "react";
+import RegistrationForm from "../components/registration/RegistrationForm";
 
 function BasePage() {
   const [name, setName] = useState("");
@@ -17,7 +18,6 @@ function BasePage() {
         },
         body: JSON.stringify(data),
       });
-
       if (response.ok) {
         alert("Data added successfully!");
       } else {
@@ -58,6 +58,7 @@ function BasePage() {
         />
         <button type="submit">Add Data</button>
       </form>
+      <RegistrationForm />
     </div>
   );
 }

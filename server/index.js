@@ -1,53 +1,36 @@
-//index.js
 const express = require('express');
-const mongoose = require('mongoose');
 const cors = require('cors');
-require('dotenv').config();
-const Test = require('./models/testModel');
+const dotenv = require('dotenv');
+const connectDB = require('./config/db');
+const testRoutes = require('./routes/testRoutes');
+const userRoutes = require('./routes/userRoutes');// Import routes
 
-
-const mongoURI = process.env.MONGO_URI;
-const PORT = process.env.PORT;
-
+dotenv.config(); // Load environment variables
 
 const app = express();
 
 app.use(cors({
   origin: 'http://localhost:5173', // Frontend URL
   methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allowed HTTP methods
-  credentials: true // Enable cookies and other credentials if needed
+  credentials: true, // Enable cookies and other credentials if needed
 }));
 
-mongoose.connect(mongoURI)
-  .then(() => {
-    console.log('Connected to MongoDB successfully');
-  })
-  .catch((error) => {
-    console.error('Error connecting to MongoDB:', error);
-  });
+app.use(express.json()); // Middleware to parse JSON data
 
-app.use(express.json());
+// Connect to MongoDB
+connectDB();
 
+// Test Route for server status
 app.get('/', (req, res) => {
   res.send('Server is running!');
 });
 
-// test to see if i can add data to the database
-app.post('/add-test', (req, res) => {
-  const { name, age } = req.body; // Get data from the request body
+// Use test routes
+app.use('/api/tests', testRoutes);
+app.use('/api/users', userRoutes); // User-related routes
 
-  const newTest = new Test({ name, age }); // Create a new document with the received data
-
-  newTest.save()  // Save the new document to the database
-    .then(() => {
-      res.status(201).send('Data added successfully');
-    })
-    .catch((error) => {
-      res.status(400).send('Error adding data: ' + error);
-    });
-});
-
-
+// Start server
+const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });

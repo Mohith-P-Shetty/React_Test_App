@@ -1,0 +1,27 @@
+.user-registration {
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  min-height: 70vh;
+}
+.render-step {
+  padding-bottom: 10px;
+}
+.navigation-buttons {
+  margin-top: 16 px;
+  display: flex;
+  padding-top: 5px;
+  padding-right: 8px;
+  align-items: center;
+  justify-content: space-evenly;
+}
+p {
+  margin-bottom: 0 !important;
+}
+.form-control {
+  border-color: #fff;
+  &:hover {
+    border-color: skyblue;
+  }
+}
