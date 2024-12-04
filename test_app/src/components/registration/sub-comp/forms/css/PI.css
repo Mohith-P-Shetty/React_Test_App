@@ -1,0 +1,41 @@
+.register-title {
+  text-align: center;
+  font-size: 18px;
+  font-weight: 700;
+}
+.personal-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 16px;
+  width: 100%;
+}
+.pi-form {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  width: 80%;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+}
+
+.register-name,
+.register-gender,
+.register-email,
+.register-contact,
+.register-date {
+  font-size: 16px;
+  font-weight: 300;
+  width: 100%;
+  padding-top: 10px;
+  .form-control {
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 300;
+    &:hover {
+      border-color: skyblue;
+      background-color: skyblue;
+    }
+  }
+}

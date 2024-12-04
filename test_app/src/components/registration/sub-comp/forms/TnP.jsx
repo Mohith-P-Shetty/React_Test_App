@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+import "./css/TnP.css";
 import { Form } from "react-bootstrap"; // Import React-Bootstrap Form components
 
 const TnP = ({ formData, setFormData, errors }) => {
@@ -12,19 +13,18 @@ const TnP = ({ formData, setFormData, errors }) => {
 
   return (
     <div className="test-and-payment">
-      <h3>Test Info & Payment</h3>
-      <Form>
-        {/* Job Applied For */}
-        <Form.Group controlId="jobAppliedFor">
-          <Form.Label>Job Applied For</Form.Label>
+      <h3 className="tnp-title">Test Info & Payment</h3>
+      <Form className="tnp-form">
+        <Form.Group controlId="jobAppliedFor" className="tnp-job">
           <Form.Control
             as="select"
+            placeholder="Job Applied For"
             name="jobAppliedFor"
             value={formData.jobAppliedFor}
             onChange={handleChange}
             isInvalid={!!errors.jobAppliedFor}
           >
-            <option value="">Select</option>
+            <option value="">Job Applied For</option>
             <option value="Software Engineer">Software Engineer</option>
             <option value="Data Analyst">Data Analyst</option>
             <option value="Product Manager">Product Manager</option>
@@ -35,8 +35,7 @@ const TnP = ({ formData, setFormData, errors }) => {
         </Form.Group>
 
         {/* Test */}
-        <Form.Group controlId="test">
-          <Form.Label>Test</Form.Label>
+        <Form.Group controlId="test" className="tnp-test">
           <Form.Control
             as="select"
             name="test"
@@ -44,7 +43,7 @@ const TnP = ({ formData, setFormData, errors }) => {
             onChange={handleChange}
             isInvalid={!!errors.test}
           >
-            <option value="">Select</option>
+            <option value="">Test</option>
             <option value="T1 2020">T1 2020</option>
             <option value="T2 2022">T2 2022</option>
           </Form.Control>
@@ -54,7 +53,7 @@ const TnP = ({ formData, setFormData, errors }) => {
         </Form.Group>
 
         {/* Payment */}
-        <Form.Group controlId="payment">
+        <Form.Group controlId="payment" className="tnp-payment">
           <Form.Check
             type="checkbox"
             name="payment"

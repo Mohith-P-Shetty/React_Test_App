@@ -1,0 +1,33 @@
+.result-content {
+  padding: 20px;
+}
+
+.filter-section {
+  margin-bottom: 20px;
+  padding: 15px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.results-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.result-card {
+  width: 300px;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.result-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.question-detail {
+  margin-bottom: 10px;
+}

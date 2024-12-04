@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import { Form } from "react-bootstrap";
+import "./css/PI.css";
 
 const PI = ({ formData, setFormData, errors }) => {
   const handleChange = (e) => {
@@ -9,11 +10,11 @@ const PI = ({ formData, setFormData, errors }) => {
 
   return (
     <div className="personal-info">
-      <h3>Personal Information</h3>
-      <Form>
-        <Form.Group controlId="candidateName">
-          <Form.Label>Candidate Name</Form.Label>
+      <h3 className="register-title">Personal Information</h3>
+      <Form className="pi-form">
+        <Form.Group controlId="candidateName" className="register-name">
           <Form.Control
+            placeholder="User Name"
             type="text"
             name="candidateName"
             value={formData.candidateName}
@@ -25,9 +26,9 @@ const PI = ({ formData, setFormData, errors }) => {
           </Form.Control.Feedback>
         </Form.Group>
 
-        <Form.Group controlId="gender">
-          <Form.Label>Gender</Form.Label>
+        <Form.Group controlId="gender" className="register-gender">
           <div className="d-flex justify-content-evenly">
+            <p>Gender :</p>
             <Form.Check
               type="checkbox"
               label="Male"
@@ -52,11 +53,11 @@ const PI = ({ formData, setFormData, errors }) => {
           </div>
         </Form.Group>
 
-        <Form.Group controlId="email">
-          <Form.Label>Email</Form.Label>
+        <Form.Group controlId="email" className="register-email">
           <Form.Control
             type="email"
             name="email"
+            placeholder="Email"
             value={formData.email}
             onChange={handleChange}
             isInvalid={!!errors.email}
@@ -66,11 +67,11 @@ const PI = ({ formData, setFormData, errors }) => {
           </Form.Control.Feedback>
         </Form.Group>
 
-        <Form.Group controlId="contactNo">
-          <Form.Label>Contact No</Form.Label>
+        <Form.Group controlId="contactNo" className="register-contact">
           <Form.Control
             type="text"
             name="contactNo"
+            placeholder="Contact No"
             value={formData.contactNo}
             onChange={handleChange}
             isInvalid={!!errors.contactNo}
@@ -80,11 +81,10 @@ const PI = ({ formData, setFormData, errors }) => {
           </Form.Control.Feedback>
         </Form.Group>
 
-        <Form.Group controlId="registrationDate">
-          <Form.Label>Registration Date</Form.Label>
+        <Form.Group controlId="registrationDate" className="register-date">
           <Form.Control
             type="text"
-            value={formData.registrationDate}
+            value={`Registration Date ${formData.registrationDate}`}
             readOnly
           />
         </Form.Group>

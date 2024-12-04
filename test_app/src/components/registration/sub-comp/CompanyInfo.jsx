@@ -4,14 +4,12 @@ import Logo from "../../../assets/logo.png";
 function CompanyInfo() {
   return (
     <Container className="my-5">
-      {/* Company Logo */}
       <Row className="text-center mb-4">
         <Col>
           <Image src={Logo} alt="Company Logo" rounded />
         </Col>
       </Row>
 
-      {/* Company Details */}
       <Row className="text-center mb-4">
         <Col>
           <h2>Company Name</h2>
@@ -24,7 +22,6 @@ function CompanyInfo() {
         </Col>
       </Row>
 
-      {/* Visit Website Button */}
       <Row className="text-center mb-4">
         <Col>
           <Button

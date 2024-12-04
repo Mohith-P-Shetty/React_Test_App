@@ -3,7 +3,10 @@ const cors = require('cors');
 const dotenv = require('dotenv');
 const connectDB = require('./config/db');
 const testRoutes = require('./routes/testRoutes');
-const userRoutes = require('./routes/userRoutes');// Import routes
+const userRoutes = require('./routes/userRoutes');
+const adminRoutes = require("./routes/adminRoutes")
+const questionRoutes = require('./routes/questionRoutes')
+const resultRoutes = require("./routes/resultRoutes")
 
 dotenv.config(); // Load environment variables
 
@@ -27,7 +30,10 @@ app.get('/', (req, res) => {
 
 // Use test routes
 app.use('/api/tests', testRoutes);
-app.use('/api/users', userRoutes); // User-related routes
+app.use('/api/users', userRoutes);// User-related routes
+app.use('/api/admins', adminRoutes);
+app.use('/api/questions', questionRoutes);
+app.use('/api/results', resultRoutes);
 
 // Start server
 const PORT = process.env.PORT || 5000;

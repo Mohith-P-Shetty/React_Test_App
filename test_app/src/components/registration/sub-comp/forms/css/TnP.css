@@ -1,0 +1,38 @@
+.tnp-title {
+  text-align: center;
+  font-size: 18px;
+  font-weight: 700;
+}
+.test-and-payment {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 16px;
+  width: 100%;
+}
+.tnp-form {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  width: 80%;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+}
+.tnp-job,
+.tnp-test,
+.tnp-payment {
+  font-size: 16px;
+  font-weight: 300;
+  width: 100%;
+  padding-top: 10px;
+  .form-control {
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 300;
+    &:hover {
+      border-color: skyblue;
+      background-color: skyblue;
+    }
+  }
+}

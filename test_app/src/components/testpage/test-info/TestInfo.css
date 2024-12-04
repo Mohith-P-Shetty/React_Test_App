@@ -1,0 +1,50 @@
+/* TestInfo.css */
+.question-button {
+  margin: 5px;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.question-button.answered {
+  background-color: green;
+  color: white;
+}
+
+.question-button.not-answered {
+  background-color: red;
+  color: white;
+}
+
+.question-button.to-review {
+  background-color: purple;
+  color: white;
+}
+
+.question-button.not-viewed {
+  background-color: gray;
+  color: white;
+}
+.test-info-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 100%;
+}
+.test-info-accordian {
+  flex: 10;
+}
+
+.test-info-button {
+  display: flex;
+  flex: 1;
+  justify-content: end;
+  .submit-button {
+    width: fit-content;
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+  }
+}

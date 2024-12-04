@@ -1,0 +1,262 @@
+[
+  {
+    "questionId": "SE001",
+    "position": "Software Engineer",
+    "type": "Analytical",
+    "question": "What is the time complexity of binary search?",
+    "options": ["O(n)", "O(log n)", "O(n log n)", "O(n^2)"],
+    "correctOption": "O(log n)"
+  },
+  {
+    "questionId": "SE002",
+    "position": "Software Engineer",
+    "type": "Analytical",
+    "question": "Which data structure is used in a LIFO order?",
+    "options": ["Queue", "Stack", "Array", "Graph"],
+    "correctOption": "Stack"
+  },
+  {
+    "questionId": "SE003",
+    "position": "Software Engineer",
+    "type": "Logical",
+    "question": "Find the missing number: 2, 4, 8, 16, ?",
+    "options": ["20", "24", "32", "64"],
+    "correctOption": "32"
+  },
+  {
+    "questionId": "SE004",
+    "position": "Software Engineer",
+    "type": "Logical",
+    "question": "Solve: If 5+3=28, 7+2=63, what is 9+1?",
+    "options": ["91", "100", "90", "81"],
+    "correctOption": "81"
+  },
+  {
+    "questionId": "SE005",
+    "position": "Software Engineer",
+    "type": "Coding",
+    "question": "What is the output of 'console.log(typeof NaN)' in JavaScript?",
+    "options": ["Undefined", "Number", "String", "NaN"],
+    "correctOption": "Number"
+  },
+  {
+    "questionId": "SE006",
+    "position": "Software Engineer",
+    "type": "Coding",
+    "question": "Which of the following is not a JavaScript framework?",
+    "options": ["React", "Vue", "Angular", "Python"],
+    "correctOption": "Python"
+  },
+  {
+    "questionId": "SE007",
+    "position": "Software Engineer",
+    "type": "Math",
+    "question": "Solve: 12 * 2 + 6 ÷ 3",
+    "options": ["26", "28", "30", "24"],
+    "correctOption": "26"
+  },
+  {
+    "questionId": "SE008",
+    "position": "Software Engineer",
+    "type": "Math",
+    "question": "What is 25% of 200?",
+    "options": ["50", "25", "100", "75"],
+    "correctOption": "50"
+  },
+  {
+    "questionId": "SE009",
+    "position": "Software Engineer",
+    "type": "Math",
+    "question": "What is the square root of 144?",
+    "options": ["10", "11", "12", "13"],
+    "correctOption": "12"
+  },
+  {
+    "questionId": "SE010",
+    "position": "Software Engineer",
+    "type": "Math",
+    "question": "Solve: 15 + 25 - (5 * 2)",
+    "options": ["30", "35", "40", "25"],
+    "correctOption": "30"
+  },
+  {
+    "questionId": "DA001",
+    "position": "Data Analyst",
+    "type": "Analytical",
+    "question": "Which chart is best to show trends over time?",
+    "options": ["Bar Chart", "Line Chart", "Pie Chart", "Scatter Plot"],
+    "correctOption": "Line Chart"
+  },
+  {
+    "questionId": "DA002",
+    "position": "Data Analyst",
+    "type": "Analytical",
+    "question": "What does SQL stand for?",
+    "options": [
+      "Structured Query Language",
+      "Sequential Query Language",
+      "Simplified Query Language",
+      "System Query Language"
+    ],
+    "correctOption": "Structured Query Language"
+  },
+  {
+    "questionId": "DA003",
+    "position": "Data Analyst",
+    "type": "Logical",
+    "question": "A dataset contains 30 apples and 10 oranges. What is the ratio of apples to oranges?",
+    "options": ["2:1", "3:1", "1:3", "4:1"],
+    "correctOption": "3:1"
+  },
+  {
+    "questionId": "DA004",
+    "position": "Data Analyst",
+    "type": "Logical",
+    "question": "If a=b and b=c, then which is true?",
+    "options": ["a=c", "a!=c", "a>b", "c<a"],
+    "correctOption": "a=c"
+  },
+  {
+    "questionId": "DA005",
+    "position": "Data Analyst",
+    "type": "Coding",
+    "question": "Which Python library is used for data analysis?",
+    "options": ["Django", "Flask", "Pandas", "NumPy"],
+    "correctOption": "Pandas"
+  },
+  {
+    "questionId": "DA006",
+    "position": "Data Analyst",
+    "type": "Coding",
+    "question": "Which of the following is a Python function to read CSV files?",
+    "options": [
+      "pd.read_csv()",
+      "csv.read()",
+      "np.read_csv()",
+      "data.read_csv()"
+    ],
+    "correctOption": "pd.read_csv()"
+  },
+  {
+    "questionId": "DA007",
+    "position": "Data Analyst",
+    "type": "Math",
+    "question": "If a dataset has a mean of 20 and variance of 4, what is the standard deviation?",
+    "options": ["2", "4", "8", "16"],
+    "correctOption": "2"
+  },
+  {
+    "questionId": "DA008",
+    "position": "Data Analyst",
+    "type": "Math",
+    "question": "What is the mode of the dataset [2, 2, 3, 4, 4, 4, 5, 6]?",
+    "options": ["2", "3", "4", "5"],
+    "correctOption": "4"
+  },
+  {
+    "questionId": "DA009",
+    "position": "Data Analyst",
+    "type": "Math",
+    "question": "What is the sum of 15% of 200 and 10% of 300?",
+    "options": ["70", "75", "80", "85"],
+    "correctOption": "75"
+  },
+  {
+    "questionId": "DA010",
+    "position": "Data Analyst",
+    "type": "Math",
+    "question": "Solve: (20 + 30) / 5",
+    "options": ["5", "10", "15", "20"],
+    "correctOption": "10"
+  },
+  {
+    "questionId": "PM001",
+    "position": "Product Manager",
+    "type": "Analytical",
+    "question": "What is the most important factor in determining a product's success?",
+    "options": [
+      "Customer needs",
+      "Profit margin",
+      "Market trends",
+      "Product features"
+    ],
+    "correctOption": "Customer needs"
+  },
+  {
+    "questionId": "PM002",
+    "position": "Product Manager",
+    "type": "Analytical",
+    "question": "What tool is commonly used for A/B testing?",
+    "options": ["Google Analytics", "Hotjar", "Optimizely", "Mixpanel"],
+    "correctOption": "Optimizely"
+  },
+  {
+    "questionId": "PM003",
+    "position": "Product Manager",
+    "type": "Logical",
+    "question": "If product A has a 5% market share and product B has a 10% market share, what is the combined market share of both products?",
+    "options": ["5%", "10%", "15%", "50%"],
+    "correctOption": "15%"
+  },
+  {
+    "questionId": "PM004",
+    "position": "Product Manager",
+    "type": "Logical",
+    "question": "What would be a good approach to handle a sudden drop in user engagement?",
+    "options": [
+      "Increase marketing budget",
+      "Enhance product features",
+      "Conduct user surveys",
+      "Reduce pricing"
+    ],
+    "correctOption": "Conduct user surveys"
+  },
+  {
+    "questionId": "PM005",
+    "position": "Product Manager",
+    "type": "Coding",
+    "question": "Which programming language is widely used for building backend APIs for products?",
+    "options": ["Python", "Ruby", "Java", "JavaScript"],
+    "correctOption": "JavaScript"
+  },
+  {
+    "questionId": "PM006",
+    "position": "Product Manager",
+    "type": "Coding",
+    "question": "Which tool is commonly used for product backlog management?",
+    "options": ["Trello", "Jira", "Slack", "GitHub"],
+    "correctOption": "Jira"
+  },
+  {
+    "questionId": "PM007",
+    "position": "Product Manager",
+    "type": "Math",
+    "question": "If you sold 500 units of a product at $20 each, what is your total revenue?",
+    "options": ["$10,000", "$1,000", "$500", "$5,000"],
+    "correctOption": "$10,000"
+  },
+  {
+    "questionId": "PM008",
+    "position": "Product Manager",
+    "type": "Math",
+    "question": "What is the price elasticity of demand if a 10% decrease in price leads to a 20% increase in quantity demanded?",
+    "options": ["0.5", "2", "1", "3"],
+    "correctOption": "2"
+  },
+  {
+    "questionId": "PM009",
+    "position": "Product Manager",
+    "type": "Math",
+    "question": "Solve: 100 - 25 + 10 * 2",
+    "options": ["105", "110", "120", "125"],
+    "correctOption": "105"
+  },
+  {
+    "questionId": "PM010",
+    "position": "Product Manager",
+    "type": "Math",
+    "question": "A product costs $50 to produce and is sold at $75. What is the profit margin?",
+    "options": ["25%", "50%", "33%", "15%"],
+    "correctOption": "50%"
+  }
+]

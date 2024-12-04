@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+import "./css/ED.css";
 import { Form } from "react-bootstrap"; // Import React-Bootstrap Form components
 
 const ED = ({ formData, setFormData, errors }) => {
@@ -9,12 +10,11 @@ const ED = ({ formData, setFormData, errors }) => {
 
   return (
     <div className="education-details">
-      <h3>Education Details</h3>
+      <h3 className="ed-title">Education Details</h3>
 
-      <Form>
+      <Form className="ed-form">
         {/* Source */}
-        <Form.Group controlId="source">
-          <Form.Label>Source</Form.Label>
+        <Form.Group controlId="source" className="ed-source">
           <Form.Control
             as="select"
             name="source"
@@ -22,7 +22,7 @@ const ED = ({ formData, setFormData, errors }) => {
             onChange={handleChange}
             isInvalid={!!errors.source}
           >
-            <option value="">Select</option>
+            <option value="">Source</option>
             <option value="College">College</option>
             <option value="Friend">Friend</option>
             <option value="Internet">Internet</option>
@@ -33,9 +33,9 @@ const ED = ({ formData, setFormData, errors }) => {
         </Form.Group>
 
         {/* College Details */}
-        <Form.Group controlId="collegeDetails">
-          <Form.Label>College Details</Form.Label>
+        <Form.Group controlId="collegeDetails" className="ed-college">
           <Form.Control
+            placeholder="College Details"
             type="text"
             name="collegeDetails"
             value={formData.collegeDetails}
@@ -48,8 +48,7 @@ const ED = ({ formData, setFormData, errors }) => {
         </Form.Group>
 
         {/* Qualifications */}
-        <Form.Group controlId="qualifications">
-          <Form.Label>Qualifications</Form.Label>
+        <Form.Group controlId="qualifications" className="ed-qualification">
           <Form.Control
             as="select"
             name="qualifications"
@@ -57,7 +56,7 @@ const ED = ({ formData, setFormData, errors }) => {
             onChange={handleChange}
             isInvalid={!!errors.qualifications}
           >
-            <option value="">Select</option>
+            <option value="">Qualifications</option>
             <option value="Degree">Degree</option>
             <option value="Pre-University">Pre-University</option>
             <option value="10th">10th</option>
@@ -68,11 +67,11 @@ const ED = ({ formData, setFormData, errors }) => {
         </Form.Group>
 
         {/* Stream */}
-        <Form.Group controlId="stream">
-          <Form.Label>Stream</Form.Label>
+        <Form.Group controlId="stream" className="ed-stream">
           <Form.Control
             as="select"
             name="stream"
+            placeholder="Stream"
             value={formData.stream}
             onChange={handleChange}
             isInvalid={!!errors.stream}
@@ -89,9 +88,9 @@ const ED = ({ formData, setFormData, errors }) => {
         </Form.Group>
 
         {/* Year of Passing */}
-        <Form.Group controlId="yearOfPassing">
-          <Form.Label>Year of Passing</Form.Label>
+        <Form.Group controlId="yearOfPassing" className="ed-year">
           <Form.Control
+            placeholder="Year of Passing"
             type="number"
             name="yearOfPassing"
             value={formData.yearOfPassing}

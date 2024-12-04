@@ -1,0 +1,55 @@
+.testpage-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.test-header {
+  display: flex;
+  height: 50px;
+  background-color: #f0f0f0;
+  padding: 10px;
+  align-items: center;
+  text-align: center;
+  font-weight: bold;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  p {
+    flex: 8;
+  }
+  .username {
+    flex: 1;
+  }
+}
+
+.test-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex: 1;
+  margin-top: 60px; /* Offset for fixed header height */
+  margin-bottom: 40px; /* Offset for fixed footer height */
+  overflow-y: auto; /* Scroll if content overflows */
+  padding: 10px;
+  background-color: #ffffff;
+  .question-card {
+    flex: 11;
+    height: 100%;
+  }
+  .test-info {
+    height: 100%;
+    flex: 3;
+  } /* White background */
+}
+
+.test-footer {
+  background-color: #f0f0f0; /* Light gray background */
+  padding: 10px;
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  z-index: 1000; /* Ensure it stays above other elements */
+}
