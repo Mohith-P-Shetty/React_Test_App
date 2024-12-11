@@ -4,7 +4,8 @@ const initialState = {
   username: null,
   userid: null,
   testid: null,
-  currentdate: null,
+  timer: null,
+  isAdmin: false,
 };
 
 const globalDataSlice = createSlice({
@@ -20,8 +21,11 @@ const globalDataSlice = createSlice({
     setTestid: (state, action) => {
       state.testid = action.payload;
     },
-    setCurrentdate: (state, action) => {
-      state.currentdate = action.payload;
+    setTimer: (state, action) => {
+      state.timer = action.payload;
+    },
+    setIsAdmin: (state, action) => {
+      state.isAdmin = action.payload;
     },
     resetGlobalData: () => initialState,
   },
@@ -31,7 +35,9 @@ export const {
   setUserid,
   setTestid,
   setUsername,
-  setCurrentdate,
+  setTimer,
+  setIsAdmin,
+  isAdmin,
   resetGlobalData,
 } = globalDataSlice.actions;
 

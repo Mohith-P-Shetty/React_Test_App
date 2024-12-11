@@ -14,11 +14,11 @@
 .register-card {
   &.card {
     border-radius: 12px;
-    background: hsla(0, 3%, 73%, 0.438);
+    background: hsla(0, 0%, 100%, 0.438);
   }
   padding: 0;
   margin: 0;
-  width: 65%;
+  width: 55%;
   position: absolute;
 }
 .register-container {
@@ -34,13 +34,19 @@
   flex-direction: column;
   background: transparent;
 }
+.register-col-2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .tab-content {
   min-height: 90%;
-  display: flex;
+  min-width: 100%;
+
   flex-direction: column;
 }
 .tab-content > .active {
-  display: flex;
+  min-width: 100%;
   min-height: 100%;
   background: transparent;
 }
@@ -59,4 +65,7 @@
       }
     }
   }
+}
+.register-row {
+  display: flex;
 }

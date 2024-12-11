@@ -1,16 +1,17 @@
 import { useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { Line } from "react-chartjs-2";
-import "chart.js/auto"; // Automatically imports Chart.js elements
+import { Card, Container, Button, Modal, Table } from "react-bootstrap";
+import "./DisplayResult.css";
+import { useNavigate } from "react-router-dom";
 
 function DisplayResult() {
   const { testid, userid, username } = useSelector((state) => state.globalData);
   const [result, setResult] = useState(null); // State for the result data
   const [questions, setQuestions] = useState([]); // State for fetched questions
-  const [chartData, setChartData] = useState(null); // State for chart data
+  const [showModal, setShowModal] = useState(false); // State for modal visibility
   const Resultid = `${userid}_${testid}`; // Result ID based on user and test IDs
-
+  const navigate = useNavigate();
   // Fetch result data
   useEffect(() => {
     const fetchResult = async () => {
@@ -41,110 +42,96 @@ function DisplayResult() {
     };
     fetchQuestions();
   }, [testid]);
-  console.log(`${result} ${questions}`);
-
-  // Prepare chart data
-  useEffect(() => {
-    if (result && questions.length > 0) {
-      const questionTypes = [...new Set(questions.map((q) => q.type))];
-
-      // Initialize scores for each type
-      const typeScores = {};
-      const typeMaxScores = {};
-
-      questionTypes.forEach((type) => {
-        typeScores[type] = 0; // Start with 0 points scored
-        typeMaxScores[type] = questions.filter((q) => q.type === type).length; // Count total questions of this type
-      });
-
-      // Calculate points scored
-      result.attendedQuestions.forEach((attendedQuestion) => {
-        const correspondingQuestion = questions.find(
-          (q) => q._id === attendedQuestion.questionId
-        );
-
-        if (correspondingQuestion) {
-          const { type, correctOption } = correspondingQuestion;
-          const { selectedOption } = attendedQuestion;
-
-          // Compare options (Single or Multiple)
-          const isCorrect =
-            Array.isArray(correctOption) && Array.isArray(selectedOption)
-              ? correctOption.sort().join() === selectedOption.sort().join()
-              : correctOption === selectedOption;
-
-          if (isCorrect) {
-            typeScores[type] += 1; // Increment score for the type
-          }
-        }
-      });
-
-      // Prepare chart data
-      const chartLabels = Object.keys(typeScores);
-      const maxScores = chartLabels.map((type) => typeMaxScores[type]);
-      const actualScores = chartLabels.map((type) => typeScores[type]);
-
-      setChartData({
-        labels: chartLabels,
-        datasets: [
-          {
-            label: "Total Points",
-            data: maxScores,
-            borderColor: "rgba(75,192,192,1)",
-            fill: false,
-          },
-          {
-            label: "Points Scored",
-            data: actualScores,
-            borderColor: "rgba(255,99,132,1)",
-            fill: false,
-          },
-        ],
-      });
-    }
-  }, [result, questions]);
 
   if (!result || questions.length === 0) {
     return <div>Loading...</div>;
   }
 
   return (
-    <div className="result-display-wrapper">
-      <h1>Result Details</h1>
-      <div className="user-info">
-        <p>
-          <strong>User Name:</strong> {username}
-        </p>
-        <p>
-          <strong>User ID:</strong> {userid}
-        </p>
-        <p>
-          <strong>Job Applied For:</strong> {testid}
-        </p>
-      </div>
-      <div className="score-info">
-        <h2>Score: {result.score}</h2>
-      </div>
-      <div className="chart-wrapper">
-        {chartData && (
-          <Line
-            data={chartData}
-            options={{
-              responsive: true,
-              plugins: {
-                legend: {
-                  position: "top",
-                },
-                title: {
-                  display: true,
-                  text: "Performance Analysis",
-                },
-              },
-            }}
-          />
-        )}
-      </div>
-    </div>
+    <Container className="result-display-wrapper">
+      <Card className="result-card">
+        <Card.Header as="h5" className="text-center">
+          Result Details
+        </Card.Header>
+        <Card.Body>
+          <Card.Title>User Information</Card.Title>
+          <Card.Text>
+            <strong>Name:</strong> {username}
+          </Card.Text>
+          <Card.Text>
+            <strong>User ID:</strong> {userid}
+          </Card.Text>
+          <Card.Text>
+            <strong>Job Applied For:</strong> {testid}
+          </Card.Text>
+          <hr />
+          <Card.Title>Performance</Card.Title>
+          <Card.Text>
+            <strong>Score:</strong> {result.score}
+          </Card.Text>
+          <Card.Text>
+            <strong>Total Questions:</strong> {questions.length}
+          </Card.Text>
+          <Card.Text>
+            <strong>Questions Attempted:</strong>{" "}
+            {result.attendedQuestions.length}
+          </Card.Text>
+          <Button variant="primary" onClick={() => setShowModal(true)}>
+            Show Details
+          </Button>
+        </Card.Body>
+        <Card.Footer className="text-muted text-center">
+          Test Date: {result.date} | Time: {result.time}
+        </Card.Footer>
+      </Card>
+      <Button variant="outline-dark" onClick={() => navigate("/")}>
+        Done
+      </Button>
+
+      {/* Modal for Detailed Results */}
+      <Modal
+        show={showModal}
+        onHide={() => setShowModal(false)}
+        centered
+        className="details-modal"
+      >
+        <Modal.Header closeButton>
+          <Modal.Title>Detailed Results</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Table striped bordered hover>
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Question ID</th>
+                <th>Type</th>
+                <th>Selected Option</th>
+              </tr>
+            </thead>
+            <tbody>
+              {result.attendedQuestions.map((item, index) => (
+                <tr key={item._id}>
+                  <td>{index + 1}</td>
+                  <td>{item.questionId}</td>
+                  <td>{item.type}</td>
+                  <td>
+                    {/* {item.selectedOption
+                      ? item.selectedOption.join(", ")
+                      : "Not Attempted"} */}
+                    N/A
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </Table>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={() => setShowModal(false)}>
+            Close
+          </Button>
+        </Modal.Footer>
+      </Modal>
+    </Container>
   );
 }
 

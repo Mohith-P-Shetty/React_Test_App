@@ -56,10 +56,35 @@ const ED = ({ formData, setFormData, errors }) => {
             onChange={handleChange}
             isInvalid={!!errors.qualifications}
           >
-            <option value="">Qualifications</option>
-            <option value="Degree">Degree</option>
-            <option value="Pre-University">Pre-University</option>
-            <option value="10th">10th</option>
+            <option value="">Select Qualifications</option>
+            <option value="Bachelor of Arts (BA)">Bachelor of Arts (BA)</option>
+            <option value="Bachelor of Science (BSc)">
+              Bachelor of Science (BSc)
+            </option>
+            <option value="Bachelor of Engineering (BE)">
+              Bachelor of Engineering (BE)
+            </option>
+            <option value="Bachelor of Technology (BTech)">
+              Bachelor of Technology (BTech)
+            </option>
+            <option value="Bachelor of Business Administration (BBA)">
+              Bachelor of Business Administration (BBA)
+            </option>
+            <option value="Bachelor of Computer Applications (BCA)">
+              Bachelor of Computer Applications (BCA)
+            </option>
+            <option value="Master of Science (MSc)">
+              Master of Science (MSc)
+            </option>
+            <option value="Master of Business Administration (MBA)">
+              Master of Business Administration (MBA)
+            </option>
+            <option value="Master of Technology (MTech)">
+              Master of Technology (MTech)
+            </option>
+            <option value="Master of Computer Applications (MCA)">
+              Master of Computer Applications (MCA)
+            </option>
           </Form.Control>
           <Form.Control.Feedback type="invalid">
             {errors.qualifications}

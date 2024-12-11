@@ -5,9 +5,6 @@
   min-height: 70vh;
 }
 .render-step {
-  display: flex;
-  align-items: center;
-  justify-content: center;
   padding-top: 60px;
   width: 100%;
   padding-bottom: 10px;
@@ -17,9 +14,14 @@
   font-weight: 300;
   display: flex;
   flex-direction: column;
-  flex: 8;
+  flex: 2;
   align-items: center;
-  justify-content: start;
+  justify-content: flex-start;
+  .nav-button {
+    display: flex;
+    width: 80%;
+    justify-content: space-evenly;
+  }
 }
 p {
   margin-bottom: 0 !important;
@@ -27,9 +29,11 @@ p {
 
 .userlogin {
   display: flex;
+  position: relative;
   align-items: center;
   justify-content: center;
   flex: 1;
+
   .btn {
     border-color: transparent;
     background: transparent;

@@ -12,8 +12,6 @@ function TestPage() {
   const [questions, setQuestions] = useState([]);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [trace, setTrace] = useState([]);
-
-  // Fetch questions based on testid
   useEffect(() => {
     const fetchQuestions = async () => {
       try {
@@ -23,14 +21,12 @@ function TestPage() {
         const response = await axios.get(
           `http://localhost:2000/api/questions/${encodedValue}`
         );
-
         setQuestions(response.data);
         console.log("Fetched Questions:", response.data);
-
         setTrace(
           response.data.map((q) => ({
             questionId: q.questionId,
-            selectedOption: q.type === "MCQ" ? [] : null, // Adjusted for type
+            selectedOption: q.type === "MCQ" ? [] : null,
             type: q.type,
             correctOption: q.correctOption,
           }))
@@ -73,7 +69,6 @@ function TestPage() {
     }
   };
 
-  // Get the selected option for the current question
   const currentTraceEntry =
     trace.find((entry) => entry.questionId === questionId) || {};
   const selectedOption = currentTraceEntry.selectedOption;
@@ -100,7 +95,7 @@ function TestPage() {
               onOptionSelect={handleOptionSelect}
               onNext={handleNext}
               onPrevious={handlePrevious}
-              timer={3000}
+              timer={360}
               type={type}
             />
           </div>

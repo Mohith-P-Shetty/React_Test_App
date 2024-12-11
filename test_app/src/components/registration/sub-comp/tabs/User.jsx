@@ -8,6 +8,7 @@ import {
   setUserid,
   setTestid,
   setUsername,
+  setTimer,
 } from "../../../../slices/globalDataSlice";
 
 import PI from "../forms/PI";
@@ -16,10 +17,10 @@ import TnP from "../forms/TnP";
 import Login from "../forms/Login";
 import { useNavigate } from "react-router-dom";
 
-const User = () => {
-  //  const { userid, testid } = useSelector((state) => state.globalData);
-  const dispatch = useDispatch();
+import { AnimatePresence, motion } from "framer-motion";
 
+const User = () => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const [step, setStep] = useState(1);
   const [islogin, setIsLogin] = useState(false);
@@ -38,19 +39,23 @@ const User = () => {
     test: "",
     payment: false,
   });
-
   const [errors, setErrors] = useState({});
+
   const nextStep = (islogin) => {
     if (islogin === true) {
       setStep(3);
-      console.log(step);
-      console.log(islogin);
     } else {
       setStep((prev) => prev + 1);
-      console.log(step);
     }
   };
-  const prevStep = () => setStep((prev) => prev - 1);
+
+  const prevStep = () => {
+    if (islogin === true) {
+      setStep(1);
+    } else {
+      setStep((prev) => prev - 1);
+    }
+  };
 
   const handlelogin = () => {
     if (islogin === false) {
@@ -61,12 +66,14 @@ const User = () => {
       setStep(1);
     }
   };
+
   const handleSubmit = async () => {
     const isValid = validateFields();
     if (!isValid) return;
     dispatch(setUserid(formData.email));
     dispatch(setUsername(formData.candidateName));
     dispatch(setTestid(formData.jobAppliedFor));
+    dispatch(setTimer(600));
     if (islogin === true) {
       try {
         const response = await fetch(
@@ -115,7 +122,10 @@ const User = () => {
   const validateFields = (islogin) => {
     let currentErrors = {};
     if (islogin === true) {
-      currentErrors = {};
+      if (step === 1) {
+        if (!/^\S+@\S+\.\S+$/.test(formData.email))
+          currentErrors.email = "Invalid email address.";
+      }
     } else {
       if (step === 1) {
         if (!formData.candidateName.trim())
@@ -143,43 +153,82 @@ const User = () => {
   };
 
   const renderStep = () => {
-    switch (step) {
-      case 1:
-        return (
-          <PI formData={formData} setFormData={setFormData} errors={errors} />
-        );
-      case 2:
-        return (
-          <ED formData={formData} setFormData={setFormData} errors={errors} />
-        );
-      case 3:
-        return (
-          <TnP formData={formData} setFormData={setFormData} errors={errors} />
-        );
-      default:
-        return null;
-    }
+    const animations = {
+      initial: { x: 100, opacity: 0 }, // Starts from the right
+      animate: { x: 0, opacity: 1 }, // Moves to its position
+      exit: { x: -100, opacity: 0 }, // Moves to the left
+      transition: { type: "ease-out", stiffness: 40, damping: 20 }, // Adjust for feel
+    };
+
+    return (
+      <motion.div layout>
+        <AnimatePresence mode="wait">
+          {step === 1 && (
+            <motion.div key="PI" {...animations}>
+              <PI
+                formData={formData}
+                setFormData={setFormData}
+                errors={errors}
+              />
+            </motion.div>
+          )}
+          {step === 2 && (
+            <motion.div key="ED" {...animations}>
+              <ED
+                formData={formData}
+                setFormData={setFormData}
+                errors={errors}
+              />
+            </motion.div>
+          )}
+          {step === 3 && (
+            <motion.div key="TnP" {...animations}>
+              <TnP
+                formData={formData}
+                setFormData={setFormData}
+                errors={errors}
+              />
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </motion.div>
+    );
   };
   const renderLogin = () => {
-    switch (step) {
-      case 1:
-        return (
-          <Login
-            formData={formData}
-            setFormData={setFormData}
-            errors={errors}
-          />
-        );
-      case 3:
-        return (
-          <TnP formData={formData} setFormData={setFormData} errors={errors} />
-        );
-      default:
-        return null;
-    }
+    const animations = {
+      initial: { x: 100, opacity: 0 }, // Starts off-screen to the right
+      animate: { x: 0, opacity: 1 }, // Moves to its position
+      exit: { x: -100, opacity: 0 }, // Moves off-screen to the left
+      transition: { type: "ease-out", stiffness: 50, damping: 20 }, // Smooth spring animation
+    };
+
+    return (
+      <motion.div layout>
+        <AnimatePresence mode="wait">
+          {step === 1 && (
+            <motion.div key="Login" {...animations}>
+              <Login
+                formData={formData}
+                setFormData={setFormData}
+                errors={errors}
+              />
+            </motion.div>
+          )}
+          {step === 3 && (
+            <motion.div key="TnP" {...animations}>
+              <TnP
+                formData={formData}
+                setFormData={setFormData}
+                errors={errors}
+              />
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </motion.div>
+    );
   };
   return (
-    <div className="user-registration">
+    <motion.div layout className="user-registration">
       <div className="render-step">
         {islogin ? renderLogin() : renderStep()}
       </div>
@@ -198,7 +247,6 @@ const User = () => {
               Next
             </Button>
           )}
-
           {step === 3 && (
             <Button variant="outline-dark" onClick={handleSubmit}>
               Submit
@@ -208,10 +256,9 @@ const User = () => {
       </div>
       <div className="userlogin">
         <p>
-          {" "}
           {islogin
-            ? "New user,Register here....."
-            : "Do you have account?....."}
+            ? "New user, Register here....."
+            : "Do you have an account?....."}
         </p>
         <div className="login-button">
           <Button variant="light" onClick={handlelogin}>
@@ -219,7 +266,7 @@ const User = () => {
           </Button>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

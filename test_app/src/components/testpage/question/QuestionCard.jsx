@@ -15,6 +15,7 @@ const QuestionCard = ({
   type,
 }) => {
   const [totalSeconds, setTotalSeconds] = useState(initialTimer * 60);
+
   const formatTime = (seconds) => {
     const minutes = Math.floor(seconds / 60);
     const remainingSeconds = seconds % 60;
@@ -34,7 +35,7 @@ const QuestionCard = ({
   return (
     <Card className="card-wrapper">
       <Card.Header className="card-header">
-        <span className={`card-span `}>
+        <span className="card-span">
           <div className={`span-color ${type}`}>{type}</div>
         </span>
         <div className="timer">
@@ -42,33 +43,21 @@ const QuestionCard = ({
         </div>
       </Card.Header>
       <Card.Body>
-        <Card.Title
-          className={`card-title`}
-        >{`Q.${questionNo} ${question}`}</Card.Title>
+        <Card.Title className="card-title">
+          {`Q.${questionNo} ${question}`}
+        </Card.Title>
         <Form className="question-card-form">
           <div className="option-group-1">
             {options.slice(0, 2).map((option, index) => (
               <Form.Check
                 className="card-options"
-                type={type === "MCQ" ? "radio" : "checkbox"}
+                type="radio"
                 id={`option-${index + 1}`}
-                name="question-options"
+                name={`question-options-${questionNo}`}
                 label={option}
                 key={index}
-                checked={
-                  type === "MCQ"
-                    ? selectedOption === option
-                    : selectedOption?.includes(option)
-                }
-                onChange={() =>
-                  onOptionSelect(
-                    type === "MCQ"
-                      ? option
-                      : selectedOption?.includes(option)
-                      ? selectedOption.filter((o) => o !== option)
-                      : [...(selectedOption || []), option]
-                  )
-                }
+                checked={selectedOption === option} // Ensures only one is selected
+                onChange={() => onOptionSelect(option)} // Updates state to selected option
               />
             ))}
           </div>
@@ -76,25 +65,13 @@ const QuestionCard = ({
             {options.slice(2).map((option, index) => (
               <Form.Check
                 className="card-options"
-                type={type === "MCQ" ? "radio" : "checkbox"}
+                type="radio"
                 id={`option-${index + 3}`}
-                name="question-options"
+                name={`question-options-${questionNo}`}
                 label={option}
                 key={index + 2}
-                checked={
-                  type === "MCQ"
-                    ? selectedOption === option
-                    : selectedOption?.includes(option)
-                }
-                onChange={() =>
-                  onOptionSelect(
-                    type === "MCQ"
-                      ? option
-                      : selectedOption?.includes(option)
-                      ? selectedOption.filter((o) => o !== option)
-                      : [...(selectedOption || []), option]
-                  )
-                }
+                checked={selectedOption === option} // Ensures only one is selected
+                onChange={() => onOptionSelect(option)} // Updates state to selected option
               />
             ))}
           </div>
@@ -124,7 +101,7 @@ QuestionCard.propTypes = {
   question: PropTypes.string.isRequired,
   options: PropTypes.arrayOf(PropTypes.string).isRequired,
   questionNo: PropTypes.number.isRequired,
-  selectedOption: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
+  selectedOption: PropTypes.string, // Only one string for radio buttons
   onOptionSelect: PropTypes.func.isRequired,
   onNext: PropTypes.func.isRequired,
   onPrevious: PropTypes.func.isRequired,

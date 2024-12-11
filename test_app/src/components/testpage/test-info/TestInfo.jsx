@@ -4,12 +4,10 @@ import { Accordion, Button, Modal } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import { useState } from "react";
 import axios from "axios";
-import { useDispatch } from "react-redux";
-import { setCurrentdate } from "../../../slices/globalDataSlice";
+
 import { useNavigate } from "react-router-dom";
 
 function TestInfo({ trace, setCurrentQuestionIndex, setQuestionNo }) {
-  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const { userid, testid } = useSelector((state) => state.globalData); // Get userid and testid from Redux store
@@ -22,7 +20,7 @@ function TestInfo({ trace, setCurrentQuestionIndex, setQuestionNo }) {
       if (!groups[entry.type]) {
         groups[entry.type] = [];
       }
-      groups[entry.type].push(entry);
+      groups[entry.type].push(entry); // Add each question to its type group
     });
     return groups;
   };
@@ -55,7 +53,6 @@ function TestInfo({ trace, setCurrentQuestionIndex, setQuestionNo }) {
       const { selectedOption, correctOption } = entry;
 
       if (selectedOption && correctOption) {
-        // Normalize and compare values
         if (
           String(selectedOption).trim().toLowerCase() ===
           String(correctOption).trim().toLowerCase()
@@ -90,8 +87,6 @@ function TestInfo({ trace, setCurrentQuestionIndex, setQuestionNo }) {
 
   // Handle Confirm and Cancel actions in the modal
   const handleConfirmSubmit = async () => {
-    const currentDate = new Date();
-    dispatch(setCurrentdate(currentDate.toISOString().split("T")[0]));
     setShowModal(false);
     try {
       const response = await axios.post(

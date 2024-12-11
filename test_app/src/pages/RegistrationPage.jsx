@@ -1,4 +1,5 @@
 import RegistrationForm from "../components/registration/RegistrationForm";
+
 import "./css/RegistrationPage.css";
 
 function RegistrationPage() {
